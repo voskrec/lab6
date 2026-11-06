@@ -1,8 +1,24 @@
-numbers = [1, 2, 3, 2, 4, 5, 1, 6, 3, 7]
+students = [
+    ("Иван", 29, 4.5),
+    ("Мария", 32, 4.8),
+    ("Пётр", 38, 4.3),
+    ("Анна", 21, 4.9)
+]
 
-# Через словарь с подсчётом
-from collections import Counter
-counts = Counter(numbers)
-#сортируем что принт выведет только те числа чьё колл больше 1
-duplicates = [num for num, count in counts.items() if count > 1]
-print (duplicates)
+# Самый старший
+oldest = max(students, key=lambda s: s[1])
+print(f"Самый старший: {oldest[0]}, {oldest[1]} лет")
+
+# С самым высоким баллом
+best = max(students, key=lambda s: s[2])
+print(f"Лучший студент: {best[0]}, балл {best[2]}")
+
+# Средний возраст
+avg_age = sum(s[1] for s in students) / len(students)
+print(f"Средний возраст: {avg_age:.1f}")
+
+# Сортировка по баллу (убывание)
+sorted_students = sorted(students, key=lambda s: s[2], reverse=True)
+print("По баллу:")
+for name, age, gpa in sorted_students:
+    print(f"{name}: {gpa}")
