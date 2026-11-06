@@ -1,18 +1,8 @@
-import random
+numbers = [1, 2, 3, 2, 4, 5, 1, 6, 3, 7]
 
-n = int(input("Введите N: "))
-numbers = [random.randint(1, 100) for _ in range(n)]
-
-print(f"Исходный список: {numbers}")
-print(f"Сумма: {sum(numbers)}")
-print(f"Среднее: {sum(numbers) / len(numbers):.2f}")
-print(f"Минимум: {min(numbers)}")
-print(f"Максимум: {max(numbers)}")
-
-# Сортировка
-numbers.sort()
-print(f"Отсортированный: {numbers}")
-
-# Удаление дубликатов (сохраняя порядок)
-unique = list(dict.fromkeys(numbers))
-print(f"Без дубликатов: {unique}")
+# Через словарь с подсчётом
+from collections import Counter
+counts = Counter(numbers)
+#сортируем что принт выведет только те числа чьё колл больше 1
+duplicates = [num for num, count in counts.items() if count > 1]
+print (duplicates)
